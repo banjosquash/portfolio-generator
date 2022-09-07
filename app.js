@@ -1,11 +1,37 @@
-const profileDataArgs = process.argv.slice(2, process.argv.length);
+const inquirer = require('inquirer');
+
+// const fs = require('fs');
+
+// const generatePage = require('./src/page-template.js');
+
+// const pageHTML = generatePage(name, github);
 
 
-const printProfileData = profileDataArrs => {
-    for (let i = 0; i < profileDataArrs.length; i++){
-        console.log(profileDataArrs[i]);
+
+
+// fs.writeFile('index.html', generatePage(name, github), err => {
+//     if (err) throw new Error (err);
+  
+//     console.log('Portfolio complete! Check out index.html to see the output!');
+//   });
+
+inquirer
+  .prompt([
+    {
+        /* Pass your questions in here */
+        type: 'input',
+        name: 'name',
+        message: 'what is yoyr name?'
     }
     
-};
-
-printProfileData(profileDataArgs)
+  ])
+  .then((answers) => {
+    console.log(answers);
+  })
+  .catch((error) => {
+    if (error.isTtyError) {
+      // Prompt couldn't be rendered in the current environment
+    } else {
+      // Something else went wrong
+    }
+  });
